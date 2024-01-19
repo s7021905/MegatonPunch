@@ -1,11 +1,14 @@
 public class Game {
     public static void main(String[] args) throws InterruptedException {
-        PowerGauge powerGauge = new PowerGauge();
+        // パワーゲージ (一段階目のゲーム)
+        PowerGauge powerGauge = new PowerGauge(); 
         int powerGaugeScore = powerGauge.run();
 
+        // 照準合わせ (二段階目のゲーム)
         Circle circle = new Circle();
         int circleScore = circle.run();
-
+        
+        // 振り子 (三段階目のゲーム)
         Pendulum pendulum = new Pendulum();
         int pendulumScore = pendulum.run();
 
@@ -14,16 +17,18 @@ public class Game {
         int normalizedCircleScore = normalizeScore(circleScore);
         int normalizedPendulumScore = normalizeScore(pendulumScore);
 
+        // 合計スコアを計算
         int totalScore = normalizedPowerGaugeScore + normalizedCircleScore + normalizedPendulumScore;
 
-        System.out.println("Normalized Power Gauge Score: " + normalizedPowerGaugeScore);
-        System.out.println("Normalized Circle Score: " + normalizedCircleScore);
-        System.out.println("Normalized Pendulum Score: " + normalizedPendulumScore);
+        // 各スコアを表示
+        System.out.println("Power Gauge Score: " + normalizedPowerGaugeScore);
+        System.out.println("Circle Score: " + normalizedCircleScore);
+        System.out.println("Pendulum Score: " + normalizedPendulumScore);
         System.out.println("Total Score: " + totalScore);
     }
 
+    // スコアを0から9999の範囲で正規化
     private static int normalizeScore(int score) {
-        // 現在のスコアを0から9999の範囲で正規化
         return (300 - score) * 9999 / 300;
     }
 }
