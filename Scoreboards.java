@@ -5,10 +5,8 @@ import java.util.Scanner;
 
 public class Scoreboards {
     
-    public static void main(String[] args) {
-        Scoreboards scoreboards = new Scoreboards();
-        scoreboards.displayScoreBoard();
-        scoreboards.backToMenu();
+    public Scoreboards() {
+
     }
     
     private DBHelper dbHelper = new DBHelper("database.csv");

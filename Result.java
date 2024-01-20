@@ -1,6 +1,12 @@
 public class Result {
 
-    public void Result(int score) {
+    int score;
+    public Result(int score)
+    {
+        this.score = score;
+    }
+    
+    public void displayAnimation() {
         int animationSpeed;
         int crack;
 

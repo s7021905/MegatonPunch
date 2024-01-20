@@ -31,4 +31,8 @@ public class Game {
     private static int normalizeScore(int score) {
         return (300 - score) * 9999 / 300;
     }
+    
+    public int run(){
+        return 4000;
+    }
 }
