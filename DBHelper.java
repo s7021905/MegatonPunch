@@ -1,32 +1,27 @@
 import java.io.*;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper {
     private String filePath;
-    private char delimiter;
+
+    public DBHelper(String filePath) {
+        this.filePath = filePath;
+    }
 
     static class ScoreRecord {
+        int id;
         String playerName;
         int score;
+        String date;
 
-        ScoreRecord(String playerName, int score) {
+        ScoreRecord(int id, String playerName, int score, String date) {
+            this.id = id;
             this.playerName = playerName;
             this.score = score;
-        }
-    }
-
-    public DBHelper(String filePath, char delimiter) {
-        this.filePath = filePath;
-        this.delimiter = delimiter;
-    }
-
-    public void writeScore(String playerName, int score) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-            writer.write(playerName + delimiter + score);
-            writer.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+            this.date = date;
         }
     }
 
@@ -35,11 +30,13 @@ public class DBHelper {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(String.valueOf(delimiter));
-                if (parts.length == 2) {
-                    String playerName = parts[0];
-                    int score = Integer.parseInt(parts[1]);
-                    scores.add(new ScoreRecord(playerName, score));
+                String[] parts = line.split(",");
+                if (parts.length == 4) {
+                    int id = Integer.parseInt(parts[0].trim());
+                    String playerName = parts[1].trim();
+                    int score = Integer.parseInt(parts[2].trim());
+                    String date = parts[3].trim();
+                    scores.add(new ScoreRecord(id, playerName, score, date));
                 }
             }
         } catch (IOException | NumberFormatException e) {
@@ -48,15 +45,14 @@ public class DBHelper {
         return scores;
     }
 
-    public void initializeFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            // ファイルを初期化（内容をクリア）
+    public void writeScore(int id, String playerName, int score) {
+        // 現在の日付を取得
+        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(id + "," + playerName + "," + score + "," + currentDate);
+            writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void clearScores() {
-        initializeFile();
     }
 }
