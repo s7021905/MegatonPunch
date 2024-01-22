@@ -31,14 +31,13 @@ public class Scoreboards {
         }
     }
 
-    public void backToMenu() {
+    public int backToMenu() {
         System.out.println("メニューに戻る際は1と入力してください。");
         try (Scanner scanner = new Scanner(System.in)) {
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("1")) {
                 // Menuクラスを呼び出すコード
-                // Menu menu = new Menu();
-                // menu.displayMenu();
+                return 1;
             } else {
                 System.out.println("無効な入力です。");
             }
