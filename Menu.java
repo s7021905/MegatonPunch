@@ -20,6 +20,8 @@ public class Menu {
 
     public void handleStartGame() {
         Game game = new Game();
+        int score = game.run();
+        Result result = new Result(score);
         // ゲームの進行に関連する処理をここに追加
         System.out.println("ゲームが終了しました。");
     }
