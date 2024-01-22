@@ -19,34 +19,31 @@ public class Menu {
     }
 
     public void handleStartGame() {
-        System.out.println("ゲームを開始します！");
-
+        Game game = new Game();
         // ゲームの進行に関連する処理をここに追加
-
         System.out.println("ゲームが終了しました。");
     }
 
     public void handleScoreBoard() {
-        System.out.println("スコアボードを表示します！");
-
-        // ScoreBoard.javaを呼び出す処理
-        ScoreBoard scoreBoard = new ScoreBoard();
-        scoreBoard.displayScores();  // 仮のメソッド名です。実際のメソッド名に置き換えてください。
-
+        // Scoreboards.javaを呼び出す処理
+        Scoreboards scoreboards = new Scoreboards();
         // スコアボードに関する追加の処理をここに追加
     }
 
     public void handleExit() {
         System.out.println("ゲームを終了します。");
-
         // ゲーム終了処理をここに追加
         System.exit(0);
     }
 
-    private void waitForButtonPress() {
+    private int getUserChoice() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enterキーを押して次の処理に進んでください。");
-        scanner.nextLine();
+        System.out.println("1, 2, 3のいずれかを入力してください：");
+        while (!scanner.hasNextInt()) {
+            System.out.println("無効な入力です。数字を入力してください：");
+            scanner.next(); // 不正な入力を読み捨てる
+        }
+        return scanner.nextInt();
     }
 
     public static void main(String[] args) {
@@ -56,18 +53,14 @@ public class Menu {
         gameMenu.displayMenu();
 
         // ユーザーの選択に基づいて処理を実行
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("選択肢の番号を入力してください：");
-        int userChoice = scanner.nextInt();
+        int userChoice = gameMenu.getUserChoice();
 
         switch (userChoice) {
             case 1:
                 gameMenu.handleStartGame();
-                gameMenu.waitForButtonPress();
                 break;
             case 2:
                 gameMenu.handleScoreBoard();
-                gameMenu.waitForButtonPress();
                 break;
             case 3:
                 gameMenu.handleExit();
