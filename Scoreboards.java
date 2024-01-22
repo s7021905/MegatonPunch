@@ -6,7 +6,7 @@ public class Scoreboards {
     private DBHelper dbHelper;
 
     public Scoreboards(DBHelper dbHelper) {
-        this.dbHelper = dbHelper;
+        DBHelper dbHelper = new dbHelper("database.csv");
     }
 
     public void displayScoreBoard() {
@@ -32,10 +32,10 @@ public class Scoreboards {
     }
 
     public void backToMenu() {
-        System.out.println("メニューに戻る際はMenuと入力");
+        System.out.println("メニューに戻る際は1と入力してください。");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        if (input.equalsIgnoreCase("Menu")) {
+        if (input.equalsIgnoreCase("1")) {
             // Menuクラスを呼び出すコード
             Menu menu = new Menu(); // 
             menu.displayMenu(); // 
