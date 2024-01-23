@@ -5,19 +5,19 @@ A simple recreation of the "Megaton Punch" mini-game from the beloved game "Kirb
 ## Quick Start
 1. Set up your Java environment.
 2. Clone the repository:
-   ```
-   git clone [repository-url]
+   ```shell
+   git clone https://github.com/s7021905/MegatonPunch.git
    ```
 3. Navigate to the project directory:
-   ```
+   ```shell
    cd MegatonPunch
    ```
 4. Compile the project:
-   ```
+   ```shell
    javac Menu.java
    ```
 5. Run the game:
-   ```
+   ```shell
    java Menu
    ```
 
