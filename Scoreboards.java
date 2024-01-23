@@ -5,42 +5,29 @@ import java.util.Scanner;
 
 public class Scoreboards {
     
-    public Scoreboards() {
+    private DBHelper dbHelper = new DBHelper("database.csv");
+    private Scanner scanner;
 
+    public Scoreboards(Scanner scanner) {
+        this.scanner = scanner;
     }
     
-    private DBHelper dbHelper = new DBHelper("database.csv");
-
     public void displayScoreBoard() {
         List<DBHelper.ScoreRecord> scores = dbHelper.readScores();
-
+    
         // スコアの高い順にソート
         Collections.sort(scores, Comparator.comparingInt((DBHelper.ScoreRecord s) -> s.score).reversed());
-        
+    
         // スコアを表形式で表示
-        System.out.println("スコアボード");
-        System.out.println("----------");
-        System.out.println("順位\tプレイヤー名\tスコア\t日付");
-        System.out.println("----------");
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.printf("%-7s %-25s %-15s %-10s\n", "順位", "プレイヤー名", "スコア", "日付");
+        System.out.println("-----------------------------------------------------------------------------");
         int rank = 1;
         for (DBHelper.ScoreRecord score : scores) {
-            System.out.println(rank + "\t" + score.playerName + "\t" + score.score + "\t" + score.date);
+            String playerName = score.playerName.isEmpty() ? "（未記入）" : score.playerName;
+            System.out.printf("%-7d\t %-25s\t %-15d\t %-10s\n", rank, playerName, score.score, score.date);
             rank++;
         }
     }
-
-    public int backToMenu() {
-        System.out.println("メニューに戻る際は1と入力してください。");
-        while(true){
-            try (Scanner scanner = new Scanner(System.in)) {
-                String input = scanner.nextLine();
-                if (input.equalsIgnoreCase("1")) {
-                    // Menuクラスを呼び出すコード
-                    return 1;
-                } else {
-                    System.out.println("無効な入力です。");
-                }
-            }
-        }
-    }
+       
 }

@@ -45,11 +45,28 @@ public class DBHelper {
         return scores;
     }
 
-    public void writeScore(int id, String playerName, int score) {
-        // 現在の日付を取得
+    public int generateNewId() {
+        int maxId = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                int id = Integer.parseInt(parts[0]);
+                if (id > maxId) {
+                    maxId = id;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return maxId + 1;
+    }
+
+    public void writeScore(String playerName, int score) {
+        int newId = generateNewId(); // 新しいIDを生成
         String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-            writer.write(id + "," + playerName + "," + score + "," + currentDate);
+            writer.write(newId + "," + playerName + "," + score + "," + currentDate);
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
