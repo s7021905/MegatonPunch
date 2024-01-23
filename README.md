@@ -22,7 +22,7 @@ A simple recreation of the "Megaton Punch" mini-game from the beloved game "Kirb
    ```
 
 ## Overview
-MegatonPunch is a score-based game that combines multiple gaming elements. Players aim to achieve the highest punch power through stages like Power Gauge, Targeting, and Pendulum. Scores are normalized between 0 and 9999, reflecting the player's performance.
+MegatonPunch is a score-based game that combines multiple gaming elements. Players aim to achieve the highest punch power through stages like Power Gauge, Targeting, and Pendulum. 
 
 ## Features
 - **Menu System**: Choose to start the game, view the scoreboard, or exit.
