@@ -338,6 +338,13 @@ public class Result {
             System.out.println("＿人人人人人人人人人人人＿\r\n" + //
                     "＞　PERFECT DESTROY　＜\r\n" + //
                     "￣Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y￣");
-        }        
+        }
+        
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+        }
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
