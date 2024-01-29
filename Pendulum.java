@@ -1,3 +1,5 @@
+// 担当者 : 石倉龍 (7021905)
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -54,11 +56,6 @@ public class Pendulum {
             if (theta <= Math.PI / 4 || theta >= 3 * Math.PI / 4) { // 角度が最小値または最大値に達したら
                 deltaTheta = -deltaTheta; // 角度の変化方向を逆にする
             }
-            // System.out.println("theta: " + theta);
-            // System.out.println("maxDistance: " + radius * Math.PI / 2 *
-            // adjustmentFactorY);
-            // System.out.println("distance: " + Math.sqrt(Math.pow(centerX - xPendulum, 2)
-            // + Math.pow((centerY + radius) * adjustmentFactorY - yPendulum, 2)));
 
             Thread.sleep(speed);
         }
