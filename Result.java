@@ -1,3 +1,5 @@
+// 7021315 江口颯
+
 public class Result {
 
     int score;
