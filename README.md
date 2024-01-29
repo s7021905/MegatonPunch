@@ -1,6 +1,7 @@
 # MegatonPunch
 
-A simple recreation of the "Megaton Punch" mini-game from the beloved game "Kirby". Developed in Java, this project offers an interactive gaming experience reminiscent of Kirby's challenge.
+A simple recreation of the 'Megaton Punch' mini-game from the beloved game 'Kirby', developed as part of a programming assignment for the Applied Programming course at Akita University. 
+This project was created using Java.
 
 ## Quick Start
 1. Set up your Java environment.
