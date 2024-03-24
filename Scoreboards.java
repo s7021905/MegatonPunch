@@ -3,7 +3,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-// 担当者　7021307 阿部紘大(Scoreboardsクラス、要件定義・パワポなどの資料作成)
 public class Scoreboards {
 
     // DBHelperクラスを使用してcsvファイルからスコアを読み込む
