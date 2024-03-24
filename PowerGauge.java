@@ -1,5 +1,3 @@
-// 担当者 : 石倉龍 (7021905)
-
 import java.io.IOException;
 import java.util.Scanner;
 
