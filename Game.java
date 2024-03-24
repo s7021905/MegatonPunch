@@ -1,3 +1,4 @@
+// 担当者 ： 石倉龍 (7021905)
 public class Game {
     // パワーゲージ (一段階目のゲーム)
     PowerGauge powerGauge = new PowerGauge(); 
