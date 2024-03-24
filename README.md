@@ -1,5 +1,3 @@
-<!-- 制作者 : 7021905 石倉龍 -->
-
 # MegatonPunch
 
 A simple recreation of the 'Megaton Punch' mini-game from the beloved game 'Kirby', developed as part of a programming assignment for the Applied Programming course at Akita University. 
